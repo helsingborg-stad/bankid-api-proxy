@@ -1,7 +1,7 @@
 import asyncio
 from pydantic import BaseModel, Field
 
-from src.lib.post import Endpoint, post
+from src.helpers.post import Endpoint, post
 
 
 class CancelRequestModel(BaseModel):

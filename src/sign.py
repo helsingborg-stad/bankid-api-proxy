@@ -3,8 +3,8 @@ import base64
 
 from pydantic import BaseModel, Field
 
-from src.lib.validators import validate_swedish_personal_number
-from src.lib.post import Endpoint, post
+from src.helpers.validators import validate_swedish_personal_number
+from src.helpers.post import Endpoint, post
 from src.models import AuthSignModel
 
 

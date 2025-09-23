@@ -2,7 +2,7 @@ import asyncio
 from typing import Any
 from pydantic import BaseModel, Field
 
-from src.lib.post import Endpoint, post
+from src.helpers.post import Endpoint, post
 
 
 class CollectModel(BaseModel):

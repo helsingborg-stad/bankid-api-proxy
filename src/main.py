@@ -1,5 +1,8 @@
 from typing import Annotated
+from dotenv import load_dotenv
 from fastapi import Body, FastAPI, HTTPException
+
+load_dotenv()
 
 from src.auth import AuthRequestModel, auth
 from src.collect import CollectModel, CollectRequestModel, collect
