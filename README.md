@@ -72,20 +72,11 @@ sequenceDiagram
     participant Frontend
     participant Backend
     participant BankId
-    participant EventBridge
-
+  
     Frontend->>Backend: POST {orderRef}
     Backend->>BankId: POST {orderRef}
-    BankId-->>Backend: {status, completionData}
-  alt status != completed
-    Backend-->>Frontend: {status}
-  end
-  alt isMittHelsingborgApp = true
-    Backend->>Backend: Generate JWT token
-    Backend->>EventBridge: {BankIdCollectComplete}
-    Backend-->>Frontend: {status, jwtToken}
-  else isMittHelsingborgApp = false
-    Backend-->>Frontend: {status, personalNumber}
+    BankId-->>Backend: {orderRef, status, completionData}
+    Backend-->>Frontend: {orderRef, status, completionData}
   end
 ```
 
