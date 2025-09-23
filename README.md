@@ -11,6 +11,11 @@ logs in, in which case we receive a success response.
 
 ## API
 
+### Authentication
+
+#### Header
+`x-api-key: <api-key>`
+
 ### AUTH
 
 ```mermaid
