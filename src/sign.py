@@ -20,7 +20,7 @@ def _sign_sync(model: SignRequestModel) -> AuthSignModel:
         "requirement": {
             "personalNumber": model.personal_number,
         }
-    }, endpoint=Endpoint.AUTH)
+    }, endpoint=Endpoint.SIGN)
 
     return AuthSignModel(
         order_ref=data["orderRef"],

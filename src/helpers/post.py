@@ -12,6 +12,7 @@ class Endpoint(Enum):
     COLLECT = "collect"
     AUTH = "auth"
     CANCEL = "cancel"
+    SIGN = "sign"
 
 
 def post(payload: dict[str, Any], endpoint: Endpoint) -> Any:
