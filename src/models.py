@@ -1,12 +1,6 @@
 from pydantic import BaseModel, Field
 
-
-class ResponseModel[T](BaseModel):
-    class Data(BaseModel):
-        type: str
-        attributes: T
-
-    data: Data
+from src.collect import CollectModel
 
 
 class AuthSignModel(BaseModel):
@@ -14,3 +8,16 @@ class AuthSignModel(BaseModel):
     auto_start_token: str = Field(serialization_alias="autoStartToken")
     qr_start_token: str = Field(serialization_alias="qrStartToken")
     qr_start_secret: str = Field(serialization_alias="qrStartSecret")
+
+
+class Data[T](BaseModel):
+    type: str
+    attributes: T
+
+
+class ResponseModel[T](BaseModel):
+    data: Data[T]
+
+
+AuthSignResponseModel = ResponseModel[AuthSignModel]
+CollectResponseModel = ResponseModel[CollectModel]
