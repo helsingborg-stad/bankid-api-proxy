@@ -32,7 +32,7 @@ sequenceDiagram
 
 #### Endpoint
 
-`/bankid/auth`
+`/auth`
 
 #### JSON payload
 
@@ -95,7 +95,7 @@ sequenceDiagram
 
 #### Endpoint
 
-`/bankid/collect`
+`/collect`
 
 #### JSON payload
 
@@ -179,7 +179,7 @@ sequenceDiagram
 
 #### Endpoint
 
-`/bankid/cancel`
+`/cancel`
 
 #### JSON payload
 
@@ -216,7 +216,7 @@ sequenceDiagram
 
 #### Endpoint
 
-`/bankid/sign`
+`/sign`
 
 #### JSON payload
 
