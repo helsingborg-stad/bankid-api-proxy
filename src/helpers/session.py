@@ -1,11 +1,13 @@
-import os
 import requests
 import pathlib
 
-_CERT_PATH = pathlib.Path(__file__).parent.parent.parent / "cert" / os.getenv("CERT_PEM")
-_KEY_PATH = pathlib.Path(__file__).parent.parent.parent / "cert" / os.getenv("KEY_PEM")
-_SERVER_CERT_PATH = pathlib.Path(__file__).parent.parent.parent / "cert" / os.getenv("SERVER_CERT_PEM")
-_P12_PASSWORD = os.getenv("PASSWORD")
+from src.helpers.config import CONFIG
+
+_ROOT_PATH = pathlib.Path(__file__).parent.parent.parent
+_CERT_PATH = _ROOT_PATH / "cert" / CONFIG["CERT_PEM"]
+_KEY_PATH = _ROOT_PATH / "cert" / CONFIG["KEY_PEM"]
+_SERVER_CERT_PATH = _ROOT_PATH / "cert" / CONFIG["SERVER_CERT_PEM"]
+_P12_PASSWORD = CONFIG["PASSWORD"]
 
 _SESSION: requests.Session | None = None
 

@@ -1,11 +1,11 @@
 import json
-import os
 from enum import Enum
 from typing import Any
 
+from src.helpers.config import CONFIG
 from src.helpers.session import _get_session
 
-_BANKID_BASE_URL = os.getenv("BANKID_BASE_URL")
+_BANKID_BASE_URL = CONFIG["BANKID_BASE_URL"]
 
 
 class Endpoint(Enum):
