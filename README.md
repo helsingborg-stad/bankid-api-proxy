@@ -77,7 +77,6 @@ sequenceDiagram
     Backend->>BankId: POST {orderRef}
     BankId-->>Backend: {orderRef, status, completionData}
     Backend-->>Frontend: {orderRef, status, completionData}
-  end
 ```
 
 #### Request type
