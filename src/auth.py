@@ -8,15 +8,18 @@ from src.models import AuthSignModel
 
 class AuthRequestModel(BaseModel):
     end_user_ip: str = Field(validation_alias="endUserIp")
-    personal_number: str = Field(validation_alias="personalNumber", min_length=10, max_length=12)
+    personal_number: str | None = Field(default=None, validation_alias="personalNumber", min_length=10, max_length=12)
 
 
 def _auth_sync(model: AuthRequestModel) -> AuthSignModel:
+    if model.personal_number and not validate_swedish_personal_number(model.personal_number):
+        raise ValueError("Invalid personal number")
+
     data = post(payload={
         "endUserIp": model.end_user_ip,
-        "requirement": {
+        **({"requirement": {
             "personalNumber": model.personal_number,
-        }
+        }} if model.personal_number else {})
     }, endpoint=Endpoint.AUTH)
 
     return AuthSignModel(
@@ -28,7 +31,4 @@ def _auth_sync(model: AuthRequestModel) -> AuthSignModel:
 
 
 async def auth(model: AuthRequestModel) -> AuthSignModel:
-    if not validate_swedish_personal_number(model.personal_number):
-        raise ValueError("Invalid personal number")
-
     return await asyncio.to_thread(_auth_sync, model)

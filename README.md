@@ -25,8 +25,8 @@ sequenceDiagram
     participant Backend
     participant BankId
 
-    Frontend->>+Backend: POST {personalNumber, endUserIp}
-    Backend->>+BankId: POST {personalNumber, endUserIp}
+    Frontend->>+Backend: POST {personalNumber | None, endUserIp}
+    Backend->>+BankId: POST {personalNumber | None, endUserIp}
     BankId-->>-Backend: {orderRef, autoStartToken, qrStartToken, qrStartSecret}
     Backend-->>-Frontend: {orderRef, autoStartToken, qrStartToken, qrStartSecret}
 ```
@@ -47,6 +47,14 @@ sequenceDiagram
   "endUserIp": "0.0.0.0"
 }
 ```
+or
+
+```json
+{
+  "endUserIp": "0.0.0.0"
+}
+```
+
 
 #### Expected response
 
